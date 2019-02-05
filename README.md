@@ -1,52 +1,81 @@
-[![Build Status](https://travis-ci.org/orizens/ngx-infinite-scroll.svg?branch=master)](https://travis-ci.org/orizens/ngx-infinite-scroll) [![Backers on Open Collective](https://opencollective.com/ngx-infinite-scroll/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/ngx-infinite-scroll/sponsors/badge.svg)](#sponsors) 
+[![Build Status](https://travis-ci.org/orizens/ngx-infinite-scroll.svg?branch=master)](https://travis-ci.org/orizens/ngx-infinite-scroll) [![Backers on Open Collective](https://opencollective.com/ngx-infinite-scroll/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/ngx-infinite-scroll/sponsors/badge.svg)](#sponsors)
+[![npm version](https://badge.fury.io/js/ngx-infinite-scroll.svg)](https://badge.fury.io/js/ngx-infinite-scroll)
+[![npm version](https://badge.fury.io/js/ngx-infinite-scroll.svg)](https://badge.fury.io/js/ngx-infinite-scroll)
+[![npm downloads a month](https://img.shields.io/npm/dm/ngx-infinite-scroll.svg)](https://img.shields.io/npm/dm/ngx-infinite-scroll.svg)
+[![npm downloads a week](https://img.shields.io/npm/dt/ngx-infinite-scroll.svg)](https://img.shields.io/npm/dt/ngx-infinite-scroll.svg)
 
 # Angular Infinite Scroll
-Inspired by [ng-infinite-scroll](https://github.com/sroze/ngInfiniteScroll) directive for angular.
 
-## Angular Support
-**Supports Angular > 4**  
-For Angular version **<= 2.3.1**, you can use ```npm i angular2-infinite-scroll``` (latest version is 0.3.42) - please notice **the angular2-infinite-scroll** package is deprecated
+versions now follow Angular's version to easily reflect compatibility.  
+Meaning, for **Angular 7**, use `ngx-infinite-scroll @ ^7.0.0`
+
+## Angular - Older Versions Support
+
+For **Angular 6** and **rxjs 6** - `ngx-infinite-scroll@6.0.0`  
+For **Angular 4** and **Angular = ^5.5.6** - use version `ngx-infinite-scroll@0.8.4`  
+For **Angular 5.x** with **rxjs =<5.5.2** - use version `ngx-infinite-scroll@0.8.3`  
+For Angular version **<= 2.3.1**, you can use `npm i angular2-infinite-scroll` (latest version is 0.3.42) - please notice **the angular2-infinite-scroll** package is deprecated
 
 ## Angular Consulting Services
-I'm a Senior Javascript Engineer & A Front End Consultant at [Orizens](http://orizens.com).
-My services include:  
-- consulting to companies and startups on how to approach code in their projects and keep it maintainable.  
-- I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.  
 
-[Contact Me Here](http://orizens.com/contact)
+I'm a Senior Javascript Engineer & A Front End Consultant at [Orizens](http://orizens.com).
+My services include:
+
+- Angular Consulting
+- Front End Consulting
+- Project Code Review
+- project bootstrapping and development.
+
+[Contact Here](http://orizens.com/contact)
+
+<a href="https://orizens.com" target="_blank">
+  <img src="https://cloud.githubusercontent.com/assets/878660/23353771/d0adbd12-fcd6-11e6-96be-7a236f8819d9.png" alt="Webpack and Angular" width="20%"/>
+</a>
 
 ## Installation
+
 ```
 npm install ngx-infinite-scroll --save
 ```
 
 ## Supported API
-Currently supported attributes:
-* **infiniteScrollDistance**<_number_> - (optional, default: **2**) - the bottom percentage point of the scroll nob relatively to the infinite-scroll container (i.e, 2 (2 * 10 = 20%) is event is triggered when 80% (100% - 20%) has been scrolled).  
-if container.height is 900px, when the container is scrolled to or past the 720px, it will fire the scrolled event. 
-* **infiniteScrollUpDistance**<_number_> - (optional, default: **1.5**) - should get a number
-* **infiniteScrollThrottle**<_number_> - (optional, default: **150**) - should get a number of **milliseconds** for throttle. The event will be triggered this many milliseconds after the user *stops* scrolling.
-* **infiniteScrollContainer**<_string|HTMLElement_> - (optional, default: null) - should get a html element or css selector for a scrollable element; window or current element will be used if this attribute is empty.
-* **scrolled**<_function_> - this will callback if the distance threshold has been reached on a scroll down.
-* **scrolledUp**<_function_> - (event: InfiniteScrollEvent) - this will callback if the distance threshold has been reached on a scroll up.
-* **scrollWindow**<_boolean_> - (optional, default: **true**) - listens to the window scroll instead of the actual element scroll. this allows to invoke a callback function in the scope of the element while listenning to the window scroll.
-* **immediateCheck**<_boolean_> - (optional, default: **false**) - invokes the handler immediately to check if a scroll event has been already triggred when the page has been loaded (i.e. - when you refresh a page that has been scrolled).
-* **infiniteScrollDisabled**<_boolean_> - (optional, default: **false**) - doesn't invoke the handler if set to true
-* **horizontal**<_boolean_> - (optional, default: false) - sets the scroll to listen for horizontal events  
-* **alwaysCallback**<_boolean_> - (optional, default: false) - instructs the scroller to always trigger events 
-* **fromRoot**<_boolean_> - (optional, default: false) - if **infiniteScrollContainer** is set, this instructs the scroller to query the container selector from the root of the **document** object. 
+
+### Properties
+
+| @Input()                 | Type                 | Required | Default | Description                                                                                                                                                                                                                                                                                           |
+| ------------------------ | -------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| infiniteScrollDistance   | number               | optional | 2       | the bottom percentage point of the scroll nob relatively to the infinite-scroll container (i.e, 2 (2 \* 10 = 20%) is event is triggered when 80% (100% - 20%) has been scrolled). if container.height is 900px, when the container is scrolled to or past the 720px, it will fire the scrolled event. |
+| infiniteScrollUpDistance | number               | optional | 1.5     | should get a number                                                                                                                                                                                                                                                                                   |
+| infiniteScrollThrottle   | number               | optional | 150     | should get a number of **milliseconds** for throttle. The event will be triggered this many milliseconds after the user _stops_ scrolling.                                                                                                                                                            |
+| scrollWindow             | boolean              | optional | true    | listens to the window scroll instead of the actual element scroll. this allows to invoke a callback function in the scope of the element while listenning to the window scroll.                                                                                                                       |
+| immediateCheck           | boolean              | optional | false   | invokes the handler immediately to check if a scroll event has been already triggred when the page has been loaded (i.e. - when you refresh a page that has been scrolled)                                                                                                                            |
+| infiniteScrollDisabled   | boolean              | optional | false   | doesn't invoke the handler if set to true                                                                                                                                                                                                                                                             |
+| horizontal               | boolean              | optional | false   | sets the scroll to listen for horizontal events                                                                                                                                                                                                                                                       |
+| alwaysCallback           | boolean              | optional | false   | instructs the scroller to always trigger events                                                                                                                                                                                                                                                       |
+| infiniteScrollContainer  | string / HTMLElement | optional | null    | should get a html element or css selector for a scrollable element; window or current element will be used if this attribute is empty.                                                                                                                                                                |
+| fromRoot                 | boolean              | optional | false   | if **infiniteScrollContainer** is set, this instructs the scroller to query the container selector from the root of the **document** object.                                                                                                                                                          |
+
+### Events
+
+| @Output()  | Type         | Event Type          | Required | Description                                                                     |
+| ---------- | ------------ | ------------------- | -------- | ------------------------------------------------------------------------------- |
+| scrolled   | EventEmitter | InfiniteScrollEvent | optional | this will callback if the distance threshold has been reached on a scroll down. |
+| scrolledUp | EventEmitter | InfiniteScrollEvent | optional | this will callback if the distance threshold has been reached on a scroll up.   |
 
 ## Behavior
+
 By default, the directive listens to the **window scroll** event and invoked the callback.  
 **To trigger the callback when the actual element is scrolled**, these settings should be configured:
-* [scrollWindow]="false"
-* set an explict css "height" value to the element
+
+- [scrollWindow]="false"
+- set an explict css "height" value to the element
 
 ## DEMO
-- [**Default Scroll** By Window - plunkr](https://plnkr.co/edit/DrEDetYnZkFxR7OWWrxS?p=preview) 
-- [Scroll On a **"Modal"** - plunkr](https://plnkr.co/edit/QnQOwE9SEapwJCCFII3L?p=preview)
+
+[Try the Demo in StackBlitz](https://stackblitz.com/edit/ngx-infinite-scroll)
 
 ## Usage
+
 First, import the InfiniteScrollModule to your module:
 
 ```typescript
@@ -57,11 +86,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app';
 
 @NgModule({
-  imports:[ BrowserModule, InfiniteScrollModule ],
-  declarations: [ AppComponent, ],
-  bootstrap: [ AppComponent ]
+  imports: [BrowserModule, InfiniteScrollModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 ```
@@ -72,49 +101,54 @@ In this example, the **onScroll** callback will be invoked when the window is sc
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app',
-	template: `
-		<div class="search-results"
-		    infiniteScroll
-		    [infiniteScrollDistance]="2"
-		    [infiniteScrollThrottle]="50"
-		    (scrolled)="onScroll()">
-		</div>
-	`
+  selector: 'app',
+  template: `
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+    ></div>
+  `
 })
 export class AppComponent {
-	onScroll () {
-	    console.log('scrolled!!')
-	}
+  onScroll() {
+    console.log('scrolled!!');
+  }
 }
 ```
+
 in this example, whenever the "search-results" is scrolled, the callback will be invoked:
 
 ```typescript
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app',
-	styles: [
-		`.search-results {
-			height: 20rem;
-			overflow: scroll;
-		}`
-	],
-	template: `
-		<div class="search-results"
-		    infiniteScroll
-		    [infiniteScrollDistance]="2"
-		    [infiniteScrollThrottle]="50"
-		    (scrolled)="onScroll()"
-		    [scrollWindow]="false">
-		</div>
-	`
+  selector: 'app',
+  styles: [
+    `
+      .search-results {
+        height: 20rem;
+        overflow: scroll;
+      }
+    `
+  ],
+  template: `
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+      [scrollWindow]="false"
+    ></div>
+  `
 })
 export class AppComponent {
-	onScroll () {
-	    console.log('scrolled!!')
-	}
+  onScroll() {
+    console.log('scrolled!!');
+  }
 }
 ```
 
@@ -125,27 +159,28 @@ import { Component } from '@angular/core';
 import { InfiniteScroll } from 'ngx-infinite-scroll';
 
 @Component({
-	selector: 'app',
-	directives: [ InfiniteScroll ],
-	template: `
-		<div class="search-results"
-		    infiniteScroll
-		    [infiniteScrollDistance]="2"
-		    [infiniteScrollUpDistance]="1.5"
-		    [infiniteScrollThrottle]="50"
-		    (scrolled)="onScrollDown()"
-		    (scrolledUp)="onScrollUp()">
-		</div>
-	`
+  selector: 'app',
+  directives: [InfiniteScroll],
+  template: `
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollUpDistance]="1.5"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScrollDown()"
+      (scrolledUp)="onScrollUp()"
+    ></div>
+  `
 })
 export class AppComponent {
-	onScrollDown () {
-	    console.log('scrolled down!!')
-	}
+  onScrollDown() {
+    console.log('scrolled down!!');
+  }
 
-	onScrollUp () {
-    	console.log('scrolled up!!')
-    }
+  onScrollUp() {
+    console.log('scrolled up!!');
+  }
 }
 ```
 
@@ -155,31 +190,34 @@ In this example, the **infiniteScrollContainer** attribute is used to point dire
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app',
-	styles: [
-		`.main-panel {
-			height: 100px;
-			overflow-y: scroll;
-		}`
-	],
-	template: `
-		<div class="main-panel">
-			<div infiniteScroll
-			    [infiniteScrollDistance]="2"
-			    [infiniteScrollThrottle]="50"
-			    [infiniteScrollContainer]="selector"
-			    [fromRoot]="true"
-			    (scrolled)="onScroll()">
-			</div>
-		</div>
-	`
+  selector: 'app',
+  styles: [
+    `
+      .main-panel {
+        height: 100px;
+        overflow-y: scroll;
+      }
+    `
+  ],
+  template: `
+    <div class="main-panel">
+      <div
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [infiniteScrollContainer]="selector"
+        [fromRoot]="true"
+        (scrolled)="onScroll()"
+      ></div>
+    </div>
+  `
 })
 export class AppComponent {
-	selector: string = '.main-panel';
-	
-	onScroll () {
-	    console.log('scrolled!!')
-	}
+  selector: string = '.main-panel';
+
+  onScroll() {
+    console.log('scrolled!!');
+  }
 }
 ```
 
@@ -189,24 +227,20 @@ It is also possible to use **infiniteScrollContainer** without additional variab
 [infiniteScrollContainer]="'.main-panel'"
 ```
 
-
-
-
 # Showcase Examples
-* [Echoes Player - Developed with Angular, angular-cli and ngrx](http://orizens.github.io/echoes-player) ([github repo for echoes player](http://github.com/orizens/echoes-player))
+
+- [Echoes Player - Developed with Angular, angular-cli and ngrx](http://orizens.github.io/echoes-player) ([github repo for echoes player](http://github.com/orizens/echoes-player))
 
 ## Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="graphs/contributors"><img src="https://opencollective.com/ngx-infinite-scroll/contributors.svg?width=890" /></a>
 
-
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/ngx-infinite-scroll#backer)]
 
 <a href="https://opencollective.com/ngx-infinite-scroll#backers" target="_blank"><img src="https://opencollective.com/ngx-infinite-scroll/backers.svg?width=890"></a>
-
 
 ## Sponsors
 
@@ -222,5 +256,3 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/ngx-infinite-scroll/sponsor/7/website" target="_blank"><img src="https://opencollective.com/ngx-infinite-scroll/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/ngx-infinite-scroll/sponsor/8/website" target="_blank"><img src="https://opencollective.com/ngx-infinite-scroll/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/ngx-infinite-scroll/sponsor/9/website" target="_blank"><img src="https://opencollective.com/ngx-infinite-scroll/sponsor/9/avatar.svg"></a>
-
-
